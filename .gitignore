@@ -1,0 +1,13 @@
+# run paper
+run/
+
+# Gradle
+.gradle
+build/
+
+# IntelliJ
+*.iws
+*.iml
+*.ipr
+.idea/
+out/
