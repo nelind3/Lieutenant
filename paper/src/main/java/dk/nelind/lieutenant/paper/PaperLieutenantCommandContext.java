@@ -1,16 +1,19 @@
 package dk.nelind.lieutenant.paper;
 
+import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import dk.nelind.lieutenant.LieutenantSource;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 
 public class PaperLieutenantCommandContext extends CommandContext<LieutenantSource> {
-    public PaperLieutenantCommandContext(CommandContext<CommandSourceStack> paperContext) {
+    private final CommandContext<CommandSourceStack> paperContext;
+
+    public PaperLieutenantCommandContext(CommandContext<CommandSourceStack> paperContext, Command<LieutenantSource> lieutenantCommand) {
         super(
             new PaperSourceWrapper(paperContext.getSource()),
             paperContext.getInput(),
             null,
-            null,
+            lieutenantCommand,
             null,
             null,
             paperContext.getRange(),
@@ -18,5 +21,12 @@ public class PaperLieutenantCommandContext extends CommandContext<LieutenantSour
             null,
             paperContext.isForked()
         );
+
+        this.paperContext = paperContext;
+    }
+
+    @Override
+    public <V> V getArgument(String name, Class<V> clazz) {
+        return paperContext.getArgument(name, clazz);
     }
 }

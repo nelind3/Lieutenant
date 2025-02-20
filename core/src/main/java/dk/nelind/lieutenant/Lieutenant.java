@@ -5,6 +5,7 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.tree.ArgumentCommandNode;
 import com.mojang.brigadier.tree.CommandNode;
 import com.mojang.brigadier.tree.LiteralCommandNode;
@@ -29,6 +30,10 @@ public abstract class Lieutenant<S> {
 
     private <T> RequiredArgumentBuilder<S, T> convertArgument(ArgumentCommandNode<LieutenantSource, T> lieutenantArgument) {
         var platformArgument = this.platformArgument(lieutenantArgument.getName(), lieutenantArgument.getType());
+        platformArgument.suggests(this.convertSuggestionProvider(
+            lieutenantArgument.getCustomSuggestions(),
+            lieutenantArgument.getCommand()
+        ));
         return this.convertNode(lieutenantArgument, platformArgument);
     }
 
@@ -53,4 +58,6 @@ public abstract class Lieutenant<S> {
     public abstract <A> RequiredArgumentBuilder<S, A> platformArgument(String name, ArgumentType<A> argumentType);
 
     public abstract Command<S> convertCommand(Command<LieutenantSource> lieutenantCommand);
+
+    public abstract SuggestionProvider<S> convertSuggestionProvider(SuggestionProvider<LieutenantSource> lieutenantSuggestionProvider, Command<LieutenantSource> lieutenantCommand);
 }
