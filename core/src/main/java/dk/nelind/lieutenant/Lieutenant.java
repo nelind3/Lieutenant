@@ -59,5 +59,8 @@ public abstract class Lieutenant<S> {
 
     public abstract Command<S> convertCommand(Command<LieutenantSource> lieutenantCommand);
 
-    public abstract SuggestionProvider<S> convertSuggestionProvider(SuggestionProvider<LieutenantSource> lieutenantSuggestionProvider, Command<LieutenantSource> lieutenantCommand);
+    public abstract SuggestionProvider<S> convertSuggestionProvider(
+        SuggestionProvider<LieutenantSource> lieutenantSuggestionProvider,
+        Command<LieutenantSource> lieutenantCommand
+    );
 }

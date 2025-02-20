@@ -23,11 +23,15 @@ public class PaperLieutenant extends Lieutenant<CommandSourceStack> {
 
     @Override
     public Command<CommandSourceStack> convertCommand(Command<LieutenantSource> lieutenantCommand) {
-        return ctx -> lieutenantCommand.run(new PaperLieutenantCommandContext(ctx, lieutenantCommand));
+        return ctx ->
+            lieutenantCommand.run(new PaperLieutenantCommandContext(ctx, lieutenantCommand));
     }
 
     @Override
-    public SuggestionProvider<CommandSourceStack> convertSuggestionProvider(SuggestionProvider<LieutenantSource> lieutenantSuggestionProvider, Command<LieutenantSource> lieutenantCommand) {
+    public SuggestionProvider<CommandSourceStack> convertSuggestionProvider(
+        SuggestionProvider<LieutenantSource> lieutenantSuggestionProvider,
+        Command<LieutenantSource> lieutenantCommand
+    ) {
         return (ctx, bldr) -> lieutenantSuggestionProvider.getSuggestions(
             new PaperLieutenantCommandContext(ctx, lieutenantCommand),
             bldr
