@@ -17,8 +17,9 @@ platform. Lieutenant aims to let modification authors implement these simple com
 let Lieutenant handle translation to platform native commands.
 
 ## Usage
-Using Lieutenant starts in the cross-platform module of a project. First bring `lieutenant-core` in as a dependency.
-In the project core you want to build out your commands using Lieutenants command source:
+Using Lieutenant starts in the cross-platform module of a project. First bring `lieutenant-core` in as a dependency
+from `https://maven.nelind.dk/releases`. In the project core you want to build out your commands using Lieutenants
+command source:
 ```java
 public class TestCommand {
     public static LiteralArgumentBuilder<LieutenantSource> createTestCommand() {
