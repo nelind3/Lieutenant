@@ -10,7 +10,7 @@ public class PaperLieutenantCommandContext extends CommandContext<LieutenantSour
 
     public PaperLieutenantCommandContext(CommandContext<CommandSourceStack> paperContext, Command<LieutenantSource> lieutenantCommand) {
         super(
-            new PaperSourceWrapper(paperContext.getSource()),
+            new PaperLieutenantSource(paperContext.getSource()),
             paperContext.getInput(),
             null,
             lieutenantCommand,

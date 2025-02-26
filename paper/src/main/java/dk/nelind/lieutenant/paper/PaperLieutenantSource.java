@@ -6,10 +6,10 @@ import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.util.TriState;
 import org.jetbrains.annotations.NotNull;
 
-public class PaperSourceWrapper implements LieutenantSource {
+public class PaperLieutenantSource implements LieutenantSource {
     private CommandSourceStack wrapped;
 
-    public PaperSourceWrapper(CommandSourceStack paperSource) {
+    public PaperLieutenantSource(CommandSourceStack paperSource) {
         this.wrapped = paperSource;
     }
 
