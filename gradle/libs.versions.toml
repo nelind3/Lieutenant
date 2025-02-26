@@ -1,0 +1,17 @@
+[versions]
+# core
+adventure = "4.18.0"
+brigadier = "1.3.10"
+
+# platforms
+paper = "1.21.1-R0.1-SNAPSHOT"
+velocity = "3.4.0-SNAPSHOT"
+
+[libraries]
+# core
+adventure-api = { module = "net.kyori:adventure-api", version.ref = "adventure"}
+brigadier = { module = "com.mojang:brigadier", version.ref = "brigadier" }
+
+# platforms
+paper-api = { module = "io.papermc.paper:paper-api", version.ref = "paper" }
+velocity-api = { module = "com.velocitypowered:velocity-api", version.ref = "velocity" }
