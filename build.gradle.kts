@@ -6,7 +6,7 @@ allprojects {
     plugins.apply("java-library")
 
     group = "dk.nelind"
-    version = "${rootProject.properties["plugin_version"]}"
+    version = "${rootProject.properties["version"]}"
 
     val targetJavaVersion = 21
 
