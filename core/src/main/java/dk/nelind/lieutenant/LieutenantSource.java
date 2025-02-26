@@ -54,4 +54,13 @@ public interface LieutenantSource extends PermissionChecker {
     default void sendMessage(Component message) {
         this.audience().sendMessage(message);
     }
+
+    /**
+     * Checks if the source has a permission
+     * @param permission The permission to check
+     * @return Whether the source has the permission
+     */
+    default boolean hasPermission(String permission) {
+        return this.test(permission);
+    }
 }
