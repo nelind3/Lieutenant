@@ -10,6 +10,8 @@ import com.mojang.brigadier.tree.ArgumentCommandNode;
 import com.mojang.brigadier.tree.CommandNode;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 
+import java.util.function.Predicate;
+
 /**
  * The core Lieutenant class. Provides builder methods {@link #literal(String)} and
  * {@link #argument(String, ArgumentType)} for building Lieutenant commands in a platform-agnostic core as well as the
@@ -72,6 +74,10 @@ public abstract class Lieutenant<S> {
             }
         }
 
+        if (lieutenantNode.getRequirement() != null) {
+            platformNodeBuilder.requires(this.convertRequirement(lieutenantNode.getRequirement()));
+        }
+
         if (lieutenantNode.getCommand() != null) {
             platformNodeBuilder.executes(this.convertCommand(lieutenantNode.getCommand()));
         }
@@ -89,4 +95,6 @@ public abstract class Lieutenant<S> {
         SuggestionProvider<LieutenantSource> lieutenantSuggestionProvider,
         Command<LieutenantSource> lieutenantCommand
     );
+
+    protected abstract Predicate<S> convertRequirement(Predicate<LieutenantSource> lieutenantRequirement);
 }

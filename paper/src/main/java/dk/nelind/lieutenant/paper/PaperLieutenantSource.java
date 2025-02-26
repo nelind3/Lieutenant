@@ -22,4 +22,9 @@ public class PaperLieutenantSource implements LieutenantSource {
     public @NotNull TriState value(@NotNull String permission) {
         return this.wrapped.getSender().permissionValue(permission);
     }
+
+    @Override
+    public boolean test(@NotNull String permission) {
+        return this.wrapped.getSender().hasPermission(permission);
+    }
 }

@@ -11,6 +11,8 @@ import dk.nelind.lieutenant.LieutenantSource;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 
+import java.util.function.Predicate;
+
 /**
  * The Paper Lieutenant used to register Lieutenant commands during Paper brigadier command registration
  */
@@ -51,5 +53,10 @@ public class PaperLieutenant extends Lieutenant<CommandSourceStack> {
             new PaperLieutenantCommandContext(ctx, lieutenantCommand),
             bldr
         );
+    }
+
+    @Override
+    protected Predicate<CommandSourceStack> convertRequirement(Predicate<LieutenantSource> lieutenantRequirement) {
+        return source -> lieutenantRequirement.test(new PaperLieutenantSource(source));
     }
 }

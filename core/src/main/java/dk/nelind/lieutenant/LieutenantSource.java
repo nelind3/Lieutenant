@@ -12,11 +12,13 @@ import net.kyori.adventure.text.Component;
  * <p>Lieutenant commands are provided with command sources of this type either as a
  * wrapper around the native command source or implemented directly on the native source.</p>
  * <p>This source provides access to the {@link Audience} of the sender of the command and is a
- * {@link PermissionChecker} of the sender</p>
+ * {@link PermissionChecker} of the sender (implementations should override {@link PermissionChecker#test(String)}.
+ * Deferring to the platforms permission checking to avoid the default implementation differing from the platform
+ * behaviour)</p>
  *
+ * @see Lieutenant
  * @see Audience
  * @see PermissionChecker
- * @see Lieutenant
  */
 public interface LieutenantSource extends PermissionChecker {
     /**
