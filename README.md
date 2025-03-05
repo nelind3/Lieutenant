@@ -38,4 +38,4 @@ public class TestCommand {
 In your platform implementations you then want to depend on the Lieutenant module for the platform in question
 (for example `lieutenant-paper` on Paper) and use Lieutenants helper to register commands. Each helper will return the
 command in the format most appropriate for the platform. For example `PaperLieutenant::toPaperCommand` returns a
-`LiteralCommandNode<CommandSourceStack>` whereas `VelocityLieutenant::toVeloctiyCommand` returns a `BrigadierCommand`
+`LiteralCommandNode<CommandSourceStack>` whereas `VelocityLieutenant::toVelocityCommand` returns a `BrigadierCommand`
